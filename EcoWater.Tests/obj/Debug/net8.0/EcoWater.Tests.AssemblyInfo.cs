@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoWater.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+423fe26db3e87ea29184fb3e1a997d11161ab1e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoWater.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoWater.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
