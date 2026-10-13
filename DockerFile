@@ -1,0 +1,28 @@
+# Estágio de Build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copia os arquivos de projeto e restaura as dependências
+COPY ["EcoWater.API/EcoWater.API.csproj", "EcoWater.API/"]
+RUN dotnet restore "EcoWater.API/EcoWater.API.csproj"
+
+# Copia o restante do código e compila
+COPY . .
+WORKDIR "/src/EcoWater.API"
+RUN dotnet build "EcoWater.API.csproj" -c Release -o /app/build
+
+# Estágio de Publicação
+FROM build AS publish
+RUN dotnet publish "EcoWater.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Estágio Final (Produção)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+EXPOSE 8080
+
+# Define variáveis de ambiente recomendadas
+ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "EcoWater.API.dll"] 

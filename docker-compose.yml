@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  ecowater-api:
+    build:
+      context: .
+      dockerfile: EcoWater.API/Dockerfile # Ajuste se o Dockerfile estiver na raiz
+    container_name: ecowater-api-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      # Sobrescreve a string de conexão para apontar para o volume persistente
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/ecowater.db
+    volumes:
+      - ecowater_data:/app/data
+    networks:
+      - ecowater_network
+    restart: always
+
+volumes:
+  # Volume para persistir o banco de dados SQLite
+  ecowater_data:
+
+networks:
+  ecowater_network:
+    driver: bridge

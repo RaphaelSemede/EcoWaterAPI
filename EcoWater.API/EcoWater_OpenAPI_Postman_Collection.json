@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "ecowater-openapi-generated",
+    "name": "EcoWater API",
+    "description": "Collection gerada a partir do Swagger/OpenAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5293"
+    }
+  ],
+  "item": [
+    {
+      "name": "Alerta",
+      "item": [
+        {
+          "name": "Listar Alertas",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Alerta?page=1&pageSize=10"
+          }
+        },
+        {
+          "name": "Gerar Alerta",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/Alerta/gerar"
+          }
+        },
+        {
+          "name": "Resolver Alerta",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/Alerta/1/resolver"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/Auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consumo",
+      "item": [
+        {
+          "name": "Listar Consumos",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Consumo?page=1&pageSize=10"
+          }
+        },
+        {
+          "name": "Cadastrar Consumo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"litrosConsumidos\": 750,\n  \"localizacao\": \"Bloco A\"\n}"
+            },
+            "url": "{{baseUrl}}/api/Consumo"
+          }
+        },
+        {
+          "name": "Detectar Vazamentos",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Consumo/vazamentos"
+          }
+        },
+        {
+          "name": "Economia",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Consumo/economia"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sensor",
+      "item": [
+        {
+          "name": "Listar Sensores",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Sensor?page=1&pageSize=10"
+          }
+        },
+        {
+          "name": "Cadastrar Sensor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Sensor Principal\",\n  \"localizacao\": \"Caixa Dagua\",\n  \"ativo\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/Sensor"
+          }
+        },
+        {
+          "name": "Buscar Sensor por ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Sensor/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relatorio",
+      "item": [
+        {
+          "name": "Economia",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Relatorio/economia"
+          }
+        },
+        {
+          "name": "Consumo Mensal",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/Relatorio/consumo-mensal"
+          }
+        }
+      ]
+    }
+  ]
+}

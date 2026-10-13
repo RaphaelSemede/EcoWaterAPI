@@ -1,0 +1,90 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  EcoWater.API -> /home/raphael/Downloads/EcoWater/EcoWater.API/bin/Debug/net8.0/EcoWater.API.dll
+  EcoWater.Tests -> /home/raphael/Downloads/EcoWater/EcoWater.Tests/bin/Debug/net8.0/EcoWater.Tests.dll
+Execução de teste para /home/raphael/Downloads/EcoWater/EcoWater.Tests/bin/Debug/net8.0/EcoWater.Tests.dll (.NETCoreApp,Version=v8.0)
+Ferramenta de Linha de Comando de Execução de Teste da Microsoft (R) Versão 17.8.0 (x64)
+Copyright (c) Microsoft Corporation. Todos os direitos reservados.
+
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+info: Microsoft.EntityFrameworkCore.Migrations[20405]
+      No migrations were applied. The database is already up to date.
+info: Microsoft.EntityFrameworkCore.Migrations[20405]
+      No migrations were applied. The database is already up to date.
+info: Microsoft.EntityFrameworkCore.Migrations[20405]
+      No migrations were applied. The database is already up to date.
+info: Microsoft.EntityFrameworkCore.Migrations[20405]
+      No migrations were applied. The database is already up to date.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "a"."Id", "a"."DataCriacao", "a"."Mensagem", "a"."Resolvido"
+      FROM "Alertas" AS "a"
+      ORDER BY "a"."DataCriacao" DESC
+      LIMIT @__p_1 OFFSET @__p_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."Id", "c"."DataLeitura", "c"."LitrosConsumidos", "c"."Localizacao"
+      FROM "Consumos" AS "c"
+      ORDER BY "c"."Id"
+      LIMIT @__p_1 OFFSET @__p_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "s"."Id", "s"."Ativo", "s"."DataCadastro", "s"."Localizacao", "s"."Nome"
+      FROM "Sensores" AS "s"
+      ORDER BY "s"."Id"
+      LIMIT @__p_1 OFFSET @__p_0
+  Com falha EcoWater.Tests.RelatorioControllerTests.Get_ReturnsHttpStatusCode200 [689 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure
+Expected: OK
+Actual:   InternalServerError
+  Rastreamento de pilha:
+     at EcoWater.Tests.RelatorioControllerTests.Get_ReturnsHttpStatusCode200() in /home/raphael/Downloads/EcoWater/EcoWater.Tests/RelatorioController.cs:line 25
+--- End of stack trace from previous location ---
+
+Com falha! – Com falha:     1, Aprovado:     3, Ignorado:     0, Total:     4, Duração: 49 ms - EcoWater.Tests.dll (net8.0)
