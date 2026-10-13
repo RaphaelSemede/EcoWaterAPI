@@ -1,27 +1,54 @@
-version: '3.8'
+name: EcoWater CI/CD Pipeline
 
-services:
-  ecowater-api:
-    build:
-      context: .
-      dockerfile: EcoWater.API/Dockerfile # Ajuste se o Dockerfile estiver na raiz
-    container_name: ecowater-api-prod
-    ports:
-      - "8080:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      # Sobrescreve a string de conexão para apontar para o volume persistente
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/ecowater.db
-    volumes:
-      - ecowater_data:/app/data
-    networks:
-      - ecowater_network
-    restart: always
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-volumes:
-  # Volume para persistir o banco de dados SQLite
-  ecowater_data:
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restaurar dependências
+      run: dotnet restore EcoWater.sln
+      
+    - name: Build da Aplicação
+      run: dotnet build EcoWater.sln -c Release --no-restore
+      
+    - name: Executar Testes Automatizados
+      run: dotnet test EcoWater.sln -c Release --no-build --verbosity normal
 
-networks:
-  ecowater_network:
-    driver: bridge
+  deploy-staging:
+    name: Deploy - Staging
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+    - uses: actions/checkout@v3
+    - name: Simulação de Deploy Staging (Docker)
+      run: |
+        echo "Iniciando deploy no ambiente de STAGING..."
+        docker-compose -f docker-compose.yml up -d --build
+        echo "Aplicação EcoWater implantada com sucesso no Staging."
+
+  deploy-production:
+    name: Deploy - Produção
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: actions/checkout@v3
+    - name: Simulação de Deploy Produção (Docker)
+      run: |
+        echo "Iniciando deploy no ambiente de PRODUÇÃO..."
+        docker-compose -f docker-compose.yml up -d --build
+        echo "Aplicação EcoWater implantada com sucesso em Produção."
